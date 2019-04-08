@@ -26,16 +26,24 @@ We only need a few types of quantum gate for this project.  These are popular ga
 X Gate (also called NOT gate):  Sends |0> to |1>   and  |1> to |0>.  
 Fleshed out a little more, this means that the X gate sends a qubit in state  a|0> + b|1> to the state b|0> + a|1>.  This linearity is a general feature of quantum gates - i.e. we can explain fully what a quantum gate does to a system just by specifying what it does to a chosen set of basis states.
 
+![Hadamard Circuit Diagram](/images/XGateDiagram.png)
+
 Z Gate:   Sends |0> to |0>  and |1> to -|1>.  
 Therefore Z sends a|0> + b|1> to a|0> - b|1>.  Note that this does not impact the probability of observing a given outcome because |b|^2 = |-b|^2.  Rather, the effects of a Z gate are seen after other gates have been applied.
 
+![Hadamard Circuit Diagram](/images/ZGateDiagram.png)
+
 Hadamard Gate:  Sends |0> to 1/sqrt(2) * (|0> + |1>)  and  |1| to 1/sqrt(2) * (|0> - |1>).
 The main use of the Hadamard gate (at least in this project) is to take qubits which are in a classical state (for example, in the state |0>)  and to put them into a superposition.  If we begin with a qubit in state |0> and send it through the Hadamard gate, we get a qubit which has equal probability of being measured as 0 or 1.  (Neat!)
+
+![Hadamard Circuit Diagram](/images/HadamardDiagram.png)
 
 ## 2-Qubit Gate
 There are lots of 2-qubit gates, but we only make use of one particular type in this project.
 
 CNOT Gate:  In principle it's only necessary to specify what this gate does on any basis state, so here goes:  The CNOT gate sends |00> to |00>, |01> to |01>, |10> to |11>, |11> to |10>  (and thus we can write down what the CNOT gate does to an arbitrary pair of qubits in any superposition).  
+
+![Hadamard Circuit Diagram](/images/CNOTGateDiagram.png)
 
 More intuitively, the CNOT gate performs a NOT operation on the second qubit if the first qubit has value 1.  This gets a little messy to think about, because we want to think about qubits as not having particular values until they're measured, and we certainly don't want our gates to be measuring anything!  So what's meant here is that the CNOT gate simply acts by the above mathematical definition - i.e. interchanges the amplitudes for the events |10> and |11>.  
 
@@ -44,5 +52,5 @@ CNOT stands for "Controlled NOT"; we often think of the first qubit as the "cont
 # Quick Review of Entanglement
 
 
-
+![Hadamard Circuit Diagram](/images/EntanglementDiagram.png)
 
