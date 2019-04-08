@@ -50,7 +50,9 @@ More intuitively, the CNOT gate performs a NOT operation on the second qubit if 
 CNOT stands for "Controlled NOT"; we often think of the first qubit as the "control bit" and the second qubit as the "target bit".  The main use of the CNOT gate (in this project) is to entangle two qubits.  
 
 # Quick Review of Entanglement
-
+We can entangle two quantum bits by use of the CNOT gate.  This is a point which is not made clearly enough in the beginner tutorials on the subject - i.e. it's usually stated, or at least suggested, that to create entanglement we need both a Hadamard gate and a CNOT gate arranged as in the image below:
 
 ![Hadamard Circuit Diagram](/images/EntanglementDiagram.png)
+
+The truth is, the CNOT gate alone is enough to entangle two states, but for classical states |0> and |1> it's just not interesting to do so.  
 
