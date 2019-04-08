@@ -26,12 +26,12 @@ We only need a few types of quantum gate for this project.  These are popular ga
 X Gate (also called NOT gate):  Sends |0> to |1>   and  |1> to |0>.  
 Fleshed out a little more, this means that the X gate sends a qubit in state  a|0> + b|1> to the state b|0> + a|1>.  This linearity is a general feature of quantum gates - i.e. we can explain fully what a quantum gate does to a system just by specifying what it does to a chosen set of basis states.
 
-![Hadamard Circuit Diagram](/images/XGateDiagram.png)
+![X Gate Circuit Diagram](/images/XGateDiagram.png)
 
 Z Gate:   Sends |0> to |0>  and |1> to -|1>.  
 Therefore Z sends a|0> + b|1> to a|0> - b|1>.  Note that this does not impact the probability of observing a given outcome because |b|^2 = |-b|^2.  Rather, the effects of a Z gate are seen after other gates have been applied.
 
-![Hadamard Circuit Diagram](/images/ZGateDiagram.png)
+![Z Gate Circuit Diagram](/images/ZGateDiagram.png)
 
 Hadamard Gate:  Sends |0> to 1/sqrt(2) * (|0> + |1>)  and  |1| to 1/sqrt(2) * (|0> - |1>).
 The main use of the Hadamard gate (at least in this project) is to take qubits which are in a classical state (for example, in the state |0>)  and to put them into a superposition.  If we begin with a qubit in state |0> and send it through the Hadamard gate, we get a qubit which has equal probability of being measured as 0 or 1.  (Neat!)
@@ -43,7 +43,7 @@ There are lots of 2-qubit gates, but we only make use of one particular type in 
 
 CNOT Gate:  In principle it's only necessary to specify what this gate does on any basis state, so here goes:  The CNOT gate sends |00> to |00>, |01> to |01>, |10> to |11>, |11> to |10>  (and thus we can write down what the CNOT gate does to an arbitrary pair of qubits in any superposition).  
 
-![Hadamard Circuit Diagram](/images/CNOTGateDiagram.png)
+![CNOT Gate Circuit Diagram](/images/CNOTGateDiagram.png)
 
 More intuitively, the CNOT gate performs a NOT operation on the second qubit if the first qubit has value 1.  This gets a little messy to think about, because we want to think about qubits as not having particular values until they're measured, and we certainly don't want our gates to be measuring anything!  So what's meant here is that the CNOT gate simply acts by the above mathematical definition - i.e. interchanges the amplitudes for the events |10> and |11>.  
 
@@ -52,7 +52,21 @@ CNOT stands for "Controlled NOT"; we often think of the first qubit as the "cont
 # Quick Review of Entanglement
 We can entangle two quantum bits by use of the CNOT gate.  This is a point which is not made clearly enough in the beginner tutorials on the subject - i.e. it's usually stated, or at least suggested, that to create entanglement we need both a Hadamard gate and a CNOT gate arranged as in the image below:
 
-![Hadamard Circuit Diagram](/images/EntanglementDiagram.png)
+![Entanglement Circuit Diagram](/images/EntanglementDiagram.png)
 
-The truth is, the CNOT gate alone is enough to entangle two states, but for classical states |0> and |1> it's just not interesting to do so.  
+The truth is, the CNOT gate alone is enough to entangle two states, but for classical states |0> and |1> it's just not interesting to do so.  Let's take a look at the sense in which a CNOT gate creates entanglement.
 
+![CNOT Circuit Diagram](/images/CNOTGateDiagram.png)
+
+In the above, let's let the top qubit begin in state a|0> + b|1>  , and let the bottom qubit begin in state |0>.  So, before the CNOT gate, our system is in state  a|00> + b|10>  , which reflects the fact that the only possibility for our second qubit is state |0>.
+
+After the CNOT (it's easy to verify on paper, and any beginners definitely should do so), the system is in state a|00> + b|11>.  That is, if we measure both qubits in any order, the only possibilities are (i) both qubits measure 0, or (ii) both qubits measure 1 (!).  That is, the two qubits are entangled.  Also note that the amplitudes haven't changed, so that now we can measure (say) the second qubit and it will behave the same as if we had decided to measure the first qubit.
+
+# Creating Interesting Entangled States From Classical States
+We already mentioned that Hadamard gates create superposition from less-interesting classical states, and that CNOT gates create entanglement.  We can therefore use these two types of gates together to manufacture interesting, entangled states from more classical states.
+
+![Entanglement Circuit Diagram With States](/images/EntanglementWithStates.png)
+
+For example, if we send in two classical qubits with value |0>, then after this pair of gates we've got an interesting system of two qubits, perfectly entangled, and equally likely to be measured as a pair of 0's or a pair of 1's.
+
+# Teleporting a Qubit in the Same Room
