@@ -15,8 +15,7 @@ A two-qubit system is in some state a|00> + b|01> + c|10> + d|11>, where again a
 
 A general n-qubit system can be written and interpreted analagously.  
 
-Once a qubit has been measured, its state 'collapses' to the state which was measured.  For example, suppose we somehow got a qubit to the state  0.6*|0> + 0.8*|1>, meaning that upon measurement we'd expect to see |0> with 36% probability and |1> with 64% probability.  Once we measure the qubit (let's say we read a '0'), its state collapses to the state  1*|0> + 0*|1>.  If we were to measure our qubit again, we'd get the same measurement with 100% probability.  In this way
-
+Once a qubit has been measured, its state 'collapses' to the state which was measured.  For example, suppose we somehow got a qubit to the state  0.6*|0> + 0.8*|1>, meaning that upon measurement we'd expect to see |0> with 36% probability and |1> with 64% probability.  Once we measure the qubit (let's say we read a '0'), its state collapses to the state  1*|0> + 0*|1>.  If we were to measure our qubit again, we'd get the same measurement with 100% probability.  
 
 
 # Quick Review of Quantum Gates
@@ -62,11 +61,33 @@ In the above, let's let the top qubit begin in state a|0> + b|1>  , and let the 
 
 After the CNOT (it's easy to verify on paper, and any beginners definitely should do so), the system is in state a|00> + b|11>.  That is, if we measure both qubits in any order, the only possibilities are (i) both qubits measure 0, or (ii) both qubits measure 1 (!).  That is, the two qubits are entangled.  Also note that the amplitudes haven't changed, so that now we can measure (say) the second qubit and it will behave the same as if we had decided to measure the first qubit.
 
-# Creating Interesting Entangled States From Classical States
+## Creating Interesting Entangled States From Classical States
 We already mentioned that Hadamard gates create superposition from less-interesting classical states, and that CNOT gates create entanglement.  We can therefore use these two types of gates together to manufacture interesting, entangled states from more classical states.
 
 ![Entanglement Circuit Diagram With States](/images/EntanglementWithStates.png)
 
 For example, if we send in two classical qubits with value |0>, then after this pair of gates we've got an interesting system of two qubits, perfectly entangled, and equally likely to be measured as a pair of 0's or a pair of 1's.
 
-# Teleporting a Qubit in the Same Room
+## Teleporting a Qubit in the Same Room
+Let's suppose we have some interesting qubit q1 in state  a|0> + b|1>  and some classical qubit q2 in state |0>.  How can we use quantum gates to turn this system into one where q1 is in a classical state and q2 is in state a|0> + b|1> ?  This is another nice beginner exercise, so give it a shot before reading on.
+
+![Circuit Diagram for Teleportation](/images/TeleportSameRoom.png)
+
+It can be quickly verified that this does what we want.  Let's step through gate by gate.
+
+The system is originally in state  a|00> + b|10>.
+
+After the CNOT gate, the system is in state  a|00> + b|11>.
+
+After the Hadamard gate, the system is in state  1/sqrt(2) ( a|00> + a|10> + b|01> + b|11> ).
+
+After measurement:
+
+ - If 0:  Bottom qubit is in state  a|0> + b|1>
+
+ - If 1:  Bottom qubit is in state  a|0> + b|1>
+
+
+
+
+
