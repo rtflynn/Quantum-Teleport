@@ -1,4 +1,6 @@
 # Quantum Teleportation
+ ![Quantum Teleportation](/images/TeleportArbitraryDistance.png)
+ 
 For a quick primer on quantum computing and the use of the Q# programming language, see https://blogs.msdn.microsoft.com/uk_faculty_connection/2018/02/06/a-beginners-guide-to-quantum-computing-and-q/ . I'll be assuming some small amount of comfort with the ideas laid out there.
 
 The main idea of quantum teleportation is as follows:  Given two qubits q1 and q2 (not necessarily being held in the same location), transfer the state of q1 to q2.  We are allowed to prepare whatever quantum or classical states we want beforehand, and we are allowed to communicate any number of classical bits in order to transfer our state from q1 to q2.  We require that q1 and q2 do not end up entangled with each other, i.e. simply entangling q1 and q2 via "CNOT(q1, q2); Hadamard(q1);" doesn't count as a solution.  In other words, we'd like to be able to reset q1 after this process without affecting q2.
