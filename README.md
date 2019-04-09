@@ -81,17 +81,15 @@ The system is originally in state  a|00> + b|10>.
 
 After the CNOT gate, the system is in state  a|00> + b|11>.
 
-After the Hadamard gate, the system is in state  1/sqrt(2) ( a|00> + a|10> + b|01> + b|11> ).
+After the Hadamard gate, the system is in state  1/sqrt(2) ( a|00> + a|10> + b|01> - b|11> ).
 
 After measurement:
 
  - If 0:  Bottom qubit is in state  a|0> + b|1>
 
- - If 1:  Bottom qubit is in state  a|0> + b|1>
+ - If 1:  Bottom qubit is in state  a|0> - b|1>
 
-That is, the bottom qubit is in the desired state regardless of the result of our measurement!  
-
-(This paragraph isn't necessary in what follows but may be interesting to some readers.) This result, i.e. that the bottom qubit ends up in the desired state regardless of measurement outcome, is perfectly explainable:  After the Hadamard gate, our state actually factors as  1/sqrt(2) (|0> + |1>)  *  ( a|0> + b|1> ), which implies that our measurements are independent.  In other words, after the CNOT gate our system is entangled, but after the Hadamard gate it is no longer entangled!
+Therefore if we measure a 0, we know that q2 is in the state we want.  If we measure a 1, then we can get q2 into the state we want by sending it through a Z gate.
 
 ## Teleporting a Qubit Across a Vast Distance
 One of the unsettling things about entanglement is that we can take two qubits, entangle them, move them far apart, and after this they're still entangled.  That is, if we measure one of them and see that it is in state |0>, then the other qubit (which is very far away) immediately 'notices' and collapses its state to |0> as well.  
