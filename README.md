@@ -73,6 +73,9 @@ For example, if we send in two classical qubits with value |0>, then after this 
 ## Teleporting a Qubit in the Same Room
 Let's suppose we have some interesting qubit q1 in state  a|0> + b|1>  and some classical qubit q2 in state |0>.  How can we use quantum gates to turn this system into one where q1 is in a classical state and q2 is in state a|0> + b|1> ?  This is another nice beginner exercise, so give it a shot before reading on.
 
+<br><br><br>
+<br><br><br>
+
 ![Circuit Diagram for Teleportation](/images/TeleportSameRoom.png)
 
 It can be quickly verified that this does what we want.  Let's step through gate by gate.
