@@ -88,6 +88,26 @@ After measurement:
  - If 1:  Bottom qubit is in state  a|0> + b|1>
 
 
+## Teleporting a Qubit Across a Vast Distance
+One of the unsettling things about entanglement is that we can take two qubits, entangle them, move them far apart, and after this they're still entangled.  That is, if we measure one of them and see that it is in state |0>, then the other qubit (which is very far away) immediately 'notices' and collapses its state to |0> as well.  
 
+Anyone who's learned a bit of relativity knows that there's no real meaning to the phrase "Events A and B occurred simultaneously"; we could easily imagine setting up some inertial frames for which our qubits were measured in either order, so that we might quickly confuse ourselves trying to think of which caused the other to collapse, and we might eventually end up in migraine territory if we keep in mind that the qubits couldn't have conspired beforehand on which state they'd eventually collapse to.
 
+Difficult physics aside, the teleportation algorithm itself is actually quite nice.  
 
+Here's the basic layout of the situation:  
+
+ - You and I meet at our local qubit market and we each pick out a qubit.
+ - We go to the 'entanglement counter' and ask the friendly qubit cashier to entangle my qubit with your qubit.  Let's keep things simple and say that both our qubits began in state |0> and the cashier simply passed them through a Hadamard-CNOT setup as shown above.
+  - We each take one of the qubits with us as we return to our respective homes.
+  - Some time later, I've gotten some *other* qubit into an interesting state which I'd like to send to you.
+  - I send you a message saying as much, so you know not to measure your qubit from the pair we've entangled.
+  - I put my interesting qubit and my entangled qubit through some gates.
+  - I make some measurements.
+  - I send you a message telling you what the results of my measurements were.
+  - Depending on my measured results, you apply some gates to your qubit which was entangled with mine.
+  - Your qubit is now in the state my interesting qubit used to be in (!)
+  
+
+ 
+  
