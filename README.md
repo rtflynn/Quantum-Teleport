@@ -109,5 +109,35 @@ Here's the basic layout of the situation:
   - Your qubit is now in the state my interesting qubit used to be in (!)
   
 
- 
+Here's a quantum circuit which achieves what we want:
+
+ ![Quantum Teleportation](/images/TeleportArbitraryDistance.png)
   
+
+Here's what you need to know to fully analyze this circuit:  
+ - The top rail initially contains my interesting qubit - i.e. is in some state a|0> + b|1>.
+ - The middle and bottom rails begin in state |0>.
+ - After the first Hadamard gate and the first CNOT gate, the middle and bottom rails contain entangled qubits.  I hold onto the middle one and you take the bottom one with you.  If you like, you can imagine cutting this initial piece out of the circuit diagram. 
+
+Once again, it's good practice to work out the final state of this system.  So go ahead and do so, and afterwards you can check with my calculations:
+
+After the first Hadamard and CNOT, the entire system is in state  1/sqrt(2) * (a|000> + a|011> + b|100> + b|111>).
+
+After the next CNOT, the system is in state  1/sqrt(2) * (a|000> + a|011> + b|110> + b|101>).
+
+After the next Hadamard gate, the system is in state  1/2 * (a|000> + a|100> + a|011> + a|111> + b|010> - b|110> + b|001> - b|101>).  Note that two of these states occur with negative amplitude from the Hadamard gate acting on |1> states.
+
+After measurement but before Z and X gates:
+ - If 00:  Bottom qubit is in state   a|0> + b|1>.    (To be a bit more clear, this comes from the fact that there are only two states in our superposition for which the first and second bits are 00, namely the a|000> and the b|001> .)  
+ - If 01: Bottom qubit is in state   a|1> + b|0>.  
+ - If 10: Bottom qubit is in state   a|0> - b|1>.
+ - If 11: Bottom qubit is in state   a|1> - b|0>.
+
+Let's analyze these a little.  
+ - If I measured 00 from my two qubits, then your qubit is already in state   a|0> + b|1> (!).  So I send you a (classical) message saying as much.
+ - If I measure 01, then your qubit is in state a|1> + b|0>, so you need to apply an X gate to it to get it into state a|0> + b|1>.  I send you a message saying as much.
+ - If I measure 10, then your qubit is in state a|0> - b|1>, so you need to apply a Z gate to it to get it into the right state.  I send you a message saying as much.
+ - If I measure 11, then your qubit is in state a|1> - b|0>, so you need to apply a Z gate followed by an X gate to get it into the right state.  I send you a message saying as much.
+ 
+Note that you have to apply a Z gate precisely in the cases where I've measured my first qubit as 1, and you have to apply an X gate precisely when I've measured my second qubit as 1.  This explains the last part of the diagram, but keep in mind that these last two connections are 'logical', meaning we don't need to physically connect the top rail to the bottom rail.  Instead I just need to tell you my measurement results and you can use your own X and Z gates to put your qubit into the desired state.
+
